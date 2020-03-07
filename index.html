@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="./styles.css" />
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="scripts.js"></script>
   </head>
 
     
@@ -22,16 +23,31 @@
         $('#messages').append($('<li>').text(msg));
         });
     });
+
+
+    
+
     </script>
 
   <body>
-    <div class="chat-box">
-      <ul id="messages"></ul>
+   <div id="main">
+    <div id="chat-box">
+        <div id="chat-window">
+          <ul id="messages"></ul>
+      </div> 
       <form>
-        <input id="m" autocomplete="off" /><button>Send</button>
-      </form>
+        <input id="m" autocomplete="off" oninput="autoScroll()"/><button onclick="autoScroll()">Send</button>
+      </form> 
     </div>
-    <div class="user-list">
-    </div>
+    
+    <div id="user-list"></div>
+  </div> 
+
+  <!-- <div class="parent">  
+    <div class="left">Left</div>
+    <div class="right">Right</div>
+  </div>  -->
+
+
   </body>
 </html>

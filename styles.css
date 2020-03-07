@@ -1,11 +1,14 @@
- * { margin: 0; padding: 0; box-sizing: border-box; } 
+ * { margin: 0; padding: 0; box-sizing: border-box; }  
 
-body { 
+
+html, body { 
     font: 13px Helvetica, Arial; 
+    height: 100%;
+    overflow: auto;
 }
 
 form {
-    background: #000;
+    background: #264653;
     padding: 3px; 
     position: fixed; 
     bottom: 0; 
@@ -19,31 +22,60 @@ form input {
     margin-right: .5%; 
 }
 
-.chat-box {
-    background-color: grey;
-    width: 70%; 
+
+/**************************/
+#main {
+    display: flex;
+    height: 100%;
+    min-height: 100%;
+    overflow: auto;
 }
 
-.user-list{
-    background-color: gray;
-    width: 20%;
-    height: 90%;
+#chat-box {
+    background-color: #264653;
+    margin-right: auto;
+    width: 70%;
+    max-height: 95%;
 }
+
+#chat-window{
+    width: 80%;
+    background-color: #e2efde;
+    overflow:auto;
+    max-height: 80%;
+    min-height: 80%;
+    margin: 0;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#user-list{
+    display: flex;
+    background-color: #f48668;
+    width: 30%;
+}
+
+/*****************************/
 
 form button {
     width: 9%; 
-    background: rgb(130, 224, 255); 
-    border: none; padding: 10px; 
+    background: #f48668; 
+    border: none; padding: 10px;
+    text-align: center; 
 }
 #messages { 
     list-style-type: none; 
     margin: 0; 
     padding: 0; 
+    height: 90%;
+    /* background-color: darkgray; */
 }
 #messages li { 
     padding: 5px 10px; 
 }
 #messages li:nth-child(odd) { 
-    background: #eee; 
+    /* background: #eee;  */
 }
 
