@@ -39,11 +39,11 @@ form input {
 }
 
 #chat-window{
-    width: 80%;
+    width: 90%;
     background-color: #e2efde;
     overflow:auto;
-    max-height: 80%;
-    min-height: 80%;
+    max-height: 90%;
+    min-height: 90%;
     margin: 0;
     position: relative;
     top: 50%;
@@ -68,8 +68,8 @@ form button {
 #messages { 
     list-style-type: none; 
     margin: 0; 
-    padding: 0; 
-    height: 90%;
+    padding: 0;
+    height: 100%;
     /* background-color: darkgray; */
 }
 #messages li { 

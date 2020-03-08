@@ -5,9 +5,9 @@ var io = require('socket.io')(http);
 
 
 var userCtr = 0;
-//var $textIn = $('m');
-// var chatWindow = document.getElementById('chat-window');
-// var textIn = dopcument.getElementById('m');
+
+//TODO
+// need to send userCTR to user wwhen they connect -> this will be their identifier.
 
 
 
