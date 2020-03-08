@@ -8,11 +8,14 @@ html, body {
 }
 
 form {
-    background: #264653;
+    background: #333138;
     padding: 3px; 
+    margin-left: 2%;
+    padding-left: 1.5%;
+    margin-bottom: 1%;
     position: fixed; 
     bottom: 0; 
-    width: 70%; 
+    width: 65%; 
 }
 
 form input {
@@ -20,6 +23,7 @@ form input {
     padding: 10px; 
     width: 90%; 
     margin-right: .5%; 
+
 }
 
 
@@ -32,35 +36,53 @@ form input {
 }
 
 #chat-box {
-    background-color: #264653;
+    background-color: #333138;
     margin-right: auto;
     width: 70%;
-    max-height: 95%;
+    max-height: 100%;
 }
 
 #chat-window{
     width: 90%;
-    background-color: #e2efde;
+    background-color: #515052;
     overflow:auto;
-    max-height: 90%;
-    min-height: 90%;
+    max-height: 85%;
+    min-height: 85%;
     margin: 0;
     position: relative;
-    top: 50%;
+    top: 48%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+#users-box h1{
+    color: #ffa1a0;
+    margin-left: 10px;
+}
 
 #users-box {
-    background-color: #f48668;
+    background-color: #333138;
     margin-right: auto;
     width: 30%;
-    max-height: 95%;
+    max-height: 100%;
+    color: whitesmoke;
+    /* border-left: 4px solid #e2e2e2; */
 }
+
+/* #users-box:after{
+    content: ' ';
+    width: 1px;
+    height: 85%;
+    background: #fffffa;
+    position: absolute;
+    bottom: -5px;
+    top: 5%;
+    left: 69%;
+
+} */
 
 #users-window{
     width: 90%;
-    background-color: #e2efde;
+    background-color: #515052;
     overflow:auto;
     max-height: 90%;
     min-height: 90%;
@@ -77,7 +99,6 @@ form input {
     margin: 0; 
     padding: 0;
     height: 100%;
-    z-index: 999999;
 }
 
 #users-list li {
@@ -88,9 +109,10 @@ form input {
 
 form button {
     width: 9%; 
-    background: #f48668; 
+    background: #ff5654; 
     border: none; padding: 10px;
     text-align: center; 
+    color: whitesmoke;
 }
 #messages { 
     list-style-type: none; 
@@ -100,9 +122,8 @@ form button {
     /* background-color: darkgray; */
 }
 #messages li { 
-    padding: 5px 10px; 
+    padding: 5px 10px;
+    color: whitesmoke; 
 }
-#messages li:nth-child(odd) { 
-    /* background: #eee;  */
-}
+
 
