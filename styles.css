@@ -15,7 +15,7 @@ form {
     margin-bottom: 1%;
     position: fixed; 
     bottom: 0; 
-    width: 65%; 
+    width: 67.5%; 
 }
 
 form input {
@@ -38,19 +38,30 @@ form input {
 #chat-box {
     background-color: #333138;
     margin-right: auto;
-    width: 70%;
+    width: 80%;
     max-height: 100%;
+    
+}
+
+#chat-box h1{
+    color: #ffa1a0;
+    margin-left: 10px;
+    margin-right: 0px;
+    position: relative;
+    left: 5%;
+    top: 5%;
+    font-size: 3em;
 }
 
 #chat-window{
     width: 90%;
     background-color: #515052;
     overflow:auto;
-    max-height: 85%;
-    min-height: 85%;
+    max-height: 80%;
+    min-height: 80%;
     margin: 0;
     position: relative;
-    top: 48%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-style: groove;
@@ -66,20 +77,7 @@ form input {
     width: 30%;
     max-height: 100%;
     color: whitesmoke;
-    /* border-left: 4px solid #e2e2e2; */
 }
-
-/* #users-box:after{
-    content: ' ';
-    width: 1px;
-    height: 85%;
-    background: #fffffa;
-    position: absolute;
-    bottom: -5px;
-    top: 5%;
-    left: 69%;
-
-} */
 
 #users-window{
     width: 90%;

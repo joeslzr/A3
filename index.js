@@ -8,6 +8,7 @@ var io = require('socket.io')(http);
 var userlist = [];
 var usercolors = [];
 var userCtr = 0;
+var serverColor = '#97abb1';
 
 var hist = [];
 
@@ -19,28 +20,25 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket){
-    userCtr += 1; // TODO: might do something nicer than just counting, maybe generate a fun nickname
+    userCtr += 1;
 
     console.log('a user connected');
     socket.emit('userID', userCtr); //send user number/ID to new connected client
     socket.on('userID', function(username){
     let timestamp = getTime();
     socket.name = username;
-    socket.color = '#97abb1'; //default color - might change later
+    socket.color = '#97abb1'; //default color
     userlist.push(socket.name);
     usercolors.push(socket.color);
     console.log('users: ' + userlist);
-    io.emit('newUser', userlist, usercolors); //  send new userlist to all clients  
+    io.emit('newUser', userlist, usercolors); //send new userlist to all clients  
+
+    socket.emit('history', hist); //send history on connection
     
-    // send history first***
-
-    socket.emit('history', hist);
-
     let msg = username + ' has joined';
     updateHist(username, timestamp, msg);
 
     io.emit('chat message',  msg, 'SERVER', socket.color,timestamp);   
-
   });
       
   socket.on('disconnect', function(){  
@@ -48,7 +46,7 @@ io.on('connection', function(socket){
       userlist.splice(i, 1);
       usercolors.splice(i, 1);
       console.log('user disconnected: ' + socket.name);
-      io.emit('newUser', userlist, usercolors); //  send new userlist to all clients
+      io.emit('newUser', userlist, usercolors); // send new userlist to all clients
     });
   });
 
@@ -56,14 +54,10 @@ http.listen(3000, function(){
   console.log('listening on *:3000');
 });
 
-io.on('connection', function(socket){                             // on "connection" event from client...
+io.on('connection', function(socket){                             
     
     let timestamp = getTime();
-    socket.on('chat message', function(msg, username, userColor){ // on "chat message" event from client...
-
-    /**** ********/
-    console.log(hist);
-    /************ */
+    socket.on('chat message', function(msg, username, userColor){ 
     
     /***** Nickname Change  *******/
     let arr = msg.split(/\s+/);
@@ -75,35 +69,37 @@ io.on('connection', function(socket){                             // on "connect
           
           let msg = 'That name is already taken!';
           updateHist(username, timestamp, msg);
-          socket.emit('chat message', msg, 'SERVER', timestamp); 
+          socket.emit('chat message', msg, 'SERVER', serverColor, timestamp); 
         }else{
           userlist[userlist.indexOf(socket.name)] = newName;
           socket.name = newName;
-          console.log('new users: ' + userlist);
           socket.emit('namechange succ', newName);
           io.emit('newUser', userlist, usercolors); //  send new userlist to all clients
 
           let msg = username + ' has changed their name to ' + newName;
           updateHist(username, timestamp, msg);
 
-          io.emit('chat message', msg, 'SERVER', timestamp); 
+          io.emit('chat message', msg, 'SERVER', serverColor, timestamp); 
         }
 
     /***** Color Change ******/
     }else if(arr[0] == "/nickcolor"){
         socket.color = '#' + arr[1];
         usercolors[userlist.indexOf(socket.name)] = socket.color;
-        console.log("colors: " + usercolors);
         io.emit('newUser', userlist, usercolors); //  send new userlist to all clients
 
         let msg = username + ' has changed their color';
         let timestamp = getTime();
         updateHist(username, timestamp, msg);
-        io.emit('chat message', msg, 'SERVER', timestamp); 
+        io.emit('chat message', msg, 'SERVER', serverColor, timestamp); 
 
+    /***** invalid input *******/    
+    }else if(arr[0].includes('/')){
+      let timestamp = getTime();
+      io.emit('chat message', arr[0] + " is not a valid command", 'SERVER', serverColor, timestamp);
     }else{
         updateHist(socket.name, timestamp, msg);
-        io.emit('chat message', msg, socket.name, socket.color, timestamp);// we emit the chat message to every client including sender
+        io.emit('chat message', msg, socket.name, socket.color, timestamp);
       }
     });
   });

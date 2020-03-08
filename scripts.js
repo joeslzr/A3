@@ -1,10 +1,9 @@
-
-/********** CLIENT Side ***********/
+/********** CLIENT side ***********/
 
 var socket = io();
 var userID;
 var username;
-var color = '#97abb1'; //Default color holder
+var color = '#97abb1'; //Default color placeholder
 
 $(function () {
   $('form').submit(function(e){
@@ -13,6 +12,7 @@ $(function () {
     $('#m').val('');
   return false;
   });
+
   socket.on('chat message', function(msg, fromUser, fromColor, timestamp){
     if(fromUser == username ){
       $('#messages').append($('<li style="border-left: 4px solid #ff5654;font-weight: bold;">').html('[' + timestamp + '] ' + '<span style="color:' + color + ';">' + username + '</span>' + ': ' + msg));//TODO: make this nicer somehow  
@@ -41,7 +41,6 @@ socket.on('history', function(hist){
   for(let i = 0; i < hist.length ; i++){
     $('#messages').append($('<li>').html('<span style="color: #88e1f2;">' + hist[i] + '</span>'));
   }
-
 });
 
 
