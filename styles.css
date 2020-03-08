@@ -51,10 +51,37 @@ form input {
     transform: translate(-50%, -50%);
 }
 
-#user-list{
-    display: flex;
+#users-box {
     background-color: #f48668;
+    margin-right: auto;
     width: 30%;
+    max-height: 95%;
+}
+
+#users-window{
+    width: 90%;
+    background-color: #e2efde;
+    overflow:auto;
+    max-height: 90%;
+    min-height: 90%;
+    margin: 0;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#users-list{
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0;
+    height: 100%;
+    z-index: 999999;
+}
+
+#users-list li {
+    padding: 5px 10px; 
 }
 
 /*****************************/
