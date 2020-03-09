@@ -36,7 +36,7 @@ io.on('connection', function(socket){
     socket.emit('history', hist); //send history on connection
     
     let msg = username + ' has joined';
-    updateHist(username, timestamp, msg);
+    updateHist('', timestamp, msg);
 
     io.emit('chat message',  msg, 'SERVER', socket.color,timestamp);   
   });
@@ -46,6 +46,12 @@ io.on('connection', function(socket){
       userlist.splice(i, 1);
       usercolors.splice(i, 1);
       console.log('user disconnected: ' + socket.name);
+
+      let msg = socket.name + ' has left';
+      let timestamp = getTime();
+      updateHist('', timestamp, msg);
+      
+
       io.emit('newUser', userlist, usercolors); // send new userlist to all clients
     });
   });
@@ -77,7 +83,7 @@ io.on('connection', function(socket){
           io.emit('newUser', userlist, usercolors); //  send new userlist to all clients
 
           let msg = username + ' has changed their name to ' + newName;
-          updateHist(username, timestamp, msg);
+          updateHist('', timestamp, msg);
 
           io.emit('chat message', msg, 'SERVER', serverColor, timestamp); 
         }
@@ -90,7 +96,7 @@ io.on('connection', function(socket){
 
         let msg = username + ' has changed their color';
         let timestamp = getTime();
-        updateHist(username, timestamp, msg);
+        updateHist('', timestamp, msg);
         io.emit('chat message', msg, 'SERVER', serverColor, timestamp); 
 
     /***** invalid input *******/    

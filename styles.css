@@ -10,7 +10,7 @@ html, body {
 form {
     background: #333138;
     padding: 3px; 
-    margin-left: 2%;
+    margin-left: 2.2%;
     padding-left: 1.5%;
     margin-bottom: 1%;
     position: fixed; 
@@ -98,6 +98,7 @@ form input {
     margin: 0; 
     padding: 0;
     height: 100%;
+    font-size: 1.5em;
 }
 
 #users-list li {
@@ -118,7 +119,6 @@ form button {
     margin: 0; 
     padding: 0;
     height: 100%;
-    /* background-color: darkgray; */
 }
 #messages li { 
     padding: 5px 10px;

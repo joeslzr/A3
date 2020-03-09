@@ -50,11 +50,9 @@ function prntOnlineUsers(userlist, colors){
       $('#users-list').append($('<li style="border-left: 4px solid #ff5654;font-weight: bold;">').html('<span style="color:' + colors[i] + ';">' + userlist[i] + '</span>'));
       color = colors[i];
     }else{
-      $('#users-list').append($("<li style= color:" + colors[i] + ";>").text(userlist[i]));
-    
+      $('#users-list').append($("<li style= color:" + colors[i] + ";>").text(userlist[i]));   
     }
   }
-
 }
 
 
